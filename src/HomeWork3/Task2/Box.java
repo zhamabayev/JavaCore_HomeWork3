@@ -1,35 +1,48 @@
 package HomeWork3.Task2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Box <T extends Fruit> {
+    private T type;
+    private float weightLimit;
+    private int amount;
 
-    ArrayList<T> fruitList;
-
-    public Box(ArrayList<T> fruitList) {
-        this.fruitList = fruitList;
+    public Box(T type, float weightLimit, int amount) {
+        this.type = type;
+        this.weightLimit = weightLimit;
+        this.amount = amount;
     }
 
-    public Float getWeight(){
-        Float result = 0;
-        for(T t: getFruitList()){
-            if(t!=null) {
-                Float value = t.getFruitWeight();
-                result = result + value;
-            }
+    public T getType() {
+        return type;
+    }
+    public float getWeightLimit() {
+        return weightLimit;
+    }
+    public int getAmount() {
+        return amount;
+    }
+
+    public float getBoxWeight() {
+        float boxWeight = amount * type.getFruitWeight();
+        return  boxWeight;
+    }
+
+    public void addFruits (int num) {
+        this.amount += num;
+    }
+
+    public boolean compare (Box box) {
+        return (getBoxWeight() == box.getBoxWeight()) ? true : false;
+    }
+    public void emptyBox (Box box) {
+        int movedFruits = box.getAmount();
+        if (amount == box.getAmount()) {
+            addFruits(movedFruits);
+            box.addFruits(-movedFruits);
+        } else {
+            System.out.println("В коробку нельзя класть фрукты разных видов");
         }
-        return result;
     }
 
-    public Boolean compare(Box<T> box){
-        if (this.getFruitList().floatValue() == box.getFruitList().floatValue()) return true;
-        return false;
-    }
-
-
-
-    public ArrayList<T> getFruitList() {
-        return fruitList;
-    }
 }
+
+

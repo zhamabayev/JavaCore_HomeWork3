@@ -1,14 +1,11 @@
 package HomeWork3.Task2;
 
-public class Fruit {
-    private String name;
+public abstract class Fruit {
     private float fruitWeight;
 
-    public Fruit(String name, fruitWeight){
-        this.name = name;
+    public Fruit(float fruitWeight){
         this.fruitWeight = fruitWeight;
     }
 
-    public String getName() { return name;}
     public float getFruitWeight() { return fruitWeight;}
 }
