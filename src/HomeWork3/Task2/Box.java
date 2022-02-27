@@ -35,7 +35,7 @@ public class Box <T extends Fruit> {
     }
     public void emptyBox (Box box) {
         int movedFruits = box.getAmount();
-        if (amount == box.getAmount()) {
+        if (type == box.getType()) {
             addFruits(movedFruits);
             box.addFruits(-movedFruits);
         } else {
